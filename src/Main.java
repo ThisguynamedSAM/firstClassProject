@@ -8,11 +8,11 @@ public class Main{
 
         Temp.fillRandom(a); // calls fill rand array and passes along a
         Temp.copyArray(a, b);
-        Temp.printCopy(b);
+        Temp.printArray(b);
         System.out.println("This is array b before sorting");
         Temp.shellSort(b);
         System.out.println("\nThis is array b after sorting");
-        Temp.printCopy(b);
+        Temp.printArray(b);
      // Temp.printArray(a);  // print array receives a and prints all elements
 
         /*
