@@ -2,36 +2,33 @@ import java.text.DecimalFormat;
 import java.util.*;
 
 public class AM {
-    public static int findPosOfLargest(int[] b){
+    public static int findPosOfLargest(int[] b) {
 
         int pos=0;
         for (int i=0; i<b.length; i++) // this works for arrays of any length
             if (b[i]>b[pos])
                 pos=i; // change pos if smaller
         return pos;
-
-
     }
-    public static int findPosOfLargest(int[] b, int start){
+
+    public static int findPosOfLargest(int[] b, int start) {
 
         int pos=start;
         for (int i=start; i<b.length; i++) // this works for arrays of any length
             if (b[i]>b[pos])
                 pos=i; // change pos if smaller
         return pos;
-
-
     }
-    public static int findPosOfLargest(double[] b){
+
+    public static int findPosOfLargest(double[] b) {
 
         int pos=0;
         for (int i=0; i<b.length; i++) // this works for arrays of any length
             if (b[i]>b[pos])
                 pos=i; // change pos if smaller
         return pos;
-
-
     }
+
     public static int findPosOfLargest(double[] b, int start){
 
         int pos=start;
@@ -39,9 +36,8 @@ public class AM {
             if (b[i]<b[pos])
                 pos=i; // change pos if smaller
         return pos;
-
-
     }
+
     public static int findPosOfSmallest(int[] b){
 
         int pos=0;
@@ -49,9 +45,8 @@ public class AM {
             if (b[i]<b[pos])
                 pos=i; // change pos if smaller
         return pos;
-
-
     }
+
     public static int findPosOfSmallest(int[] b, int start){
 
         int pos=start;
@@ -59,9 +54,8 @@ public class AM {
             if (b[i]<b[pos])
                 pos=i; // change pos if smaller
         return pos;
-
-
     }
+
     public static int findPosOfSmallest(double[] b){
 
         int pos=0;
@@ -69,9 +63,8 @@ public class AM {
             if (b[i]<b[pos])
                 pos=i; // change pos if smaller
         return pos;
-
-
     }
+
     public static int findPosOfSmallest(double[] b, int start){
 
         int pos=start;
@@ -79,9 +72,8 @@ public class AM {
             if (b[i]<b[pos])
                 pos=i; // change pos if smaller
         return pos;
-
-
     }
+
     // write a method to fill an array of integers by asking the user for input
 
     public static void fillArray(int[] a){
@@ -94,6 +86,7 @@ public class AM {
             a[i] = keyboard.nextInt();
         }
     }
+
     public static void fillArray(int[] a, int n){
         //preconditions: start with an empty defined int[] array of length >= n
         //postconditions: array filled with user input values
@@ -104,6 +97,7 @@ public class AM {
             a[i] = keyboard.nextInt();
         }
     }
+
     public static void fillArray(double[] a){
         //preconditions: start with an empty defined int[] array
         //postconditions: array filled with user input values
@@ -114,6 +108,7 @@ public class AM {
             a[i] = keyboard.nextDouble();
         }
     }
+
     public static void fillArray(double[] a, int n){
         //preconditions: start with an empty defined int[] array of length >= n
         //postconditions: array filled with user input values
@@ -129,53 +124,63 @@ public class AM {
     {
         return a[findPosOfSmallest(a)];
     }
+
     public static int findValueOfSmallest(int[] a, int start)
     {
         return a[findPosOfSmallest(a, start)];
     }
+
     public static double findValueOfSmallest(double[] a)
     {
         return a[findPosOfSmallest(a)];
     }
+
     public static double findValueOfSmallest(double[] a, int start)
     {
         return a[findPosOfSmallest(a, start)];
     }
+
     public static int findValueOfLargest(int[] a)
     {
         return a[findPosOfLargest(a)];
     }
+
     public static int findValueOfLargest(int[] a, int start)
     {
         return a[findPosOfLargest(a, start)];
     }
+
     public static double findValueOfLargest(double[] a)
     {
         return a[findPosOfLargest(a)];
     }
+
     public static double findValueOfLargest(double[] a, int start)
     {
         return a[findPosOfLargest(a, start)];
     }
+
     public static void swap(int[] a, int i, int j){
         int temp = a[i];
         a[i] = a[j];
         a[j] = temp;
     }
+
     public static void swap(double[] a, int i, int j){
         double temp = a[i];
         a[i] = a[j];
         a[j] = temp;
     }
+
     public static void selSort(int[] a){
 
         for(int k= 0;k<a.length;k++)
         {
             int p=AM.findPosOfSmallest(a,k);
             AM.swap(a, p, k);
-
         }
     }
+
     public static void selSort(double[] a){
 
         for(int k= 0;k<a.length;k++)
@@ -185,6 +190,7 @@ public class AM {
 
         }
     }
+
     public static void printArr(int[] a)
     {
         String s = "";
@@ -198,6 +204,7 @@ public class AM {
         }
         System.out.println(s);
     }
+
     public static void printArr(double[] a)
     {
         String s = "";
@@ -211,6 +218,7 @@ public class AM {
         }
         System.out.println(s);
     }
+
     public static void printArr(double[] a, int x) {
         String s = "";
         double temp;
@@ -223,6 +231,7 @@ public class AM {
         }
         System.out.println(s);
     }
+
     public static void printArray(double[] a, int n){
         //precondition: array a has been filled, int n must be >= 1
         //postcondition: array a has been printed with n decimal places
@@ -243,6 +252,7 @@ public class AM {
         }
         System.out.println(s);
     }
+
     public static void insertionSort(int[] a){
         //precondition: a has been filled
         // postcondition: a will be sorted low to high
@@ -257,6 +267,7 @@ public class AM {
             a[i+1]=key;
         }
     }
+
     public static void insertionSort(double[] a){
         //precondition: a has been filled
         // postcondition: a will be sorted low to high
@@ -271,6 +282,7 @@ public class AM {
             a[i+1]=key;
         }
     }
+
     public static void insertionSort(int[] a,int st, int end){
         //precondition: a has been filled
         // postcondition: a will be sorted low to high from position st through pos end
@@ -285,6 +297,7 @@ public class AM {
             a[i+1]=key;
         }
     }
+
     public static void insertionSort(double[] a,int st, int end){
         //precondition: a has been filled
         // postcondition: a will be sorted low to high from position st through pos end
@@ -299,8 +312,4 @@ public class AM {
             a[i+1]=key;
         }
     }
-
-    public static void testPrint() {
-
-        System.out.println("This works!");}
 }
