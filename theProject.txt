@@ -1,4 +1,4 @@
-dd a method called fillRandom to the AM class 
+add a method called fillRandom to the AM class 
 
 with header:
 
