@@ -1,0 +1,67 @@
+dd a method called fillRandom to the AM class 
+
+with header:
+
+public static void fillRandom(int a[], st, end){
+
+// precondition array a has been declared as an array of integers
+
+// postcondition array will be filled with random integers k, st<=k<=end
+
+2. Google a working version of shellSort and put it into AM class
+
+3. Write a method called copyArray in AM class with header
+
+ public static void copyArray(int a[], int [b]){
+
+ precondition: array a has been filled and array b has length>=a.length
+
+ postcondition: all the elements in array a will now be in array b
+
+4. Write a benchmarking program that tests the following sorting algorithms for efficiency:
+
+ selection sort, insertion sort, shell sort, quicksort, quick integer sort (distribution counting).
+
+ The benchmarking algo should work as follows:
+
+ for lengths N=1,000, 10,000,100,000,250,000, 5000,000, 750,000 and 1,000,000,000
+
+ time the above sorting algorithms as follows:
+
+ fill an array a with random integers in the range 0 to N (so if N=1000, range is 0 to 1000)
+
+ save a copy of the original random data in array b
+
+ use long data type to store the current time in nanoseconds in startTime
+
+ run the first algo selection sort
+
+ after it executes store the currentTime in endTime
+
+ the elapsedTime is then given by startTime - endTime
+
+store the result in an array called selection such that selection[0] is the elapsed time 
+
+for the first experiment with 1,000 elements, selection[1] is the elapsed time for the second 
+
+experiment with 10,000 elements etc.
+
+Restore the original data from array b to array a and run the next sorting algorithm, insertion 
+
+sort.
+
+When all the algorithms have been run output the results to excel (.csv file)
+
+Finally, repeat the same process running 100 experiments and output the average elapsed 
+
+time to a separate excel report.
+
+Other ideas: try quicksort without some of the improvements like medianofthree or insertion 
+
+sort
+
+Try a sorted array
+
+Try an inversely sorted array
+
+Try an almost sorted array
