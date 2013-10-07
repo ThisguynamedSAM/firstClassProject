@@ -6,6 +6,7 @@ public class Main {
     private static int[] b = new int[10000];
     private static int[] time = new int[10]; // one timeframe for each element
     private static long start, end;
+    private static String filePath = "/Users/Samson/Documents/code/java/firstClassProject/sortTimes.csv";
 
     /*
     *   create a new method to loop through all sorts
@@ -14,13 +15,13 @@ public class Main {
     public static void main(String[] args) {
 
         Temp.fillRandom(a); // calls fill rand array and passes along a
-
-//        loop();
-//        loop(4);
+    /*
+        loop();
+        loop(4);
         loop(1.2);
-      /*  loop(true);
-
-        loop('x');  */
+        loop(true);
+        loop('x');
+    */
     }
 
     private static long timeElapsed(long start, long end) {
@@ -38,7 +39,7 @@ public class Main {
             end = System.nanoTime(); // end timer
             time[i] = (int) (long) (timeElapsed(start, end)); // converts long to int
         }
-        Temp.generateCsvFile("/Users/Samson/Documents/code/java/firstClassProject/sortTimes.csv", time, "Shell sort");
+        Temp.generateCsvFile(filePath, time, "Shell sort");
     }
 
     // sel sort
@@ -51,7 +52,7 @@ public class Main {
             end = System.nanoTime(); // end timer
             time[i] = (int) (long) (timeElapsed(start, end)); // converts long to int
         }
-        Temp.generateCsvFile("/Users/Samson/Documents/code/java/firstClassProject/sortTimes.csv", time, "Sel sort");
+        Temp.generateCsvFile(filePath, time, "Sel sort");
     }
 
     // quicksort
@@ -64,7 +65,7 @@ public class Main {
             end = System.nanoTime(); // end timer
             time[i] = (int) (long) (timeElapsed(start, end)); // converts long to int
         }
-        Temp.generateCsvFile("/Users/Samson/Documents/code/java/firstClassProject/sortTimes.csv", time, "Quick sort");
+        Temp.generateCsvFile(filePath, time, "Quick sort");
     }
 
     // insertion sort
@@ -77,7 +78,7 @@ public class Main {
             end = System.nanoTime(); // end timer
             time[i] = (int) (long) (timeElapsed(start, end)); // converts long to int
         }
-        Temp.generateCsvFile("/Users/Samson/Documents/code/java/firstClassProject/sortTimes.csv", time, "Insertion sort");
+        Temp.generateCsvFile(filePath, time, "Insertion sort");
     }
 
     // quick integer sort
@@ -90,6 +91,6 @@ public class Main {
             end = System.nanoTime(); // end timer
             time[i] = (int) (long) (timeElapsed(start, end)); // converts long to int
         }
-        Temp.generateCsvFile("/Users/Samson/Documents/code/java/firstClassProject/sortTimes.csv", time, "Quick Integer sort");
+        Temp.generateCsvFile(filePath, time, "Quick Integer sort");
     }
 }
