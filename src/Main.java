@@ -4,13 +4,8 @@ public class Main {
 
     private static int[] a = new int[10000];
     private static int[] b = new int[10000];
-    private static int[] time = new int[10]; // hold one time (in nanoseconds) for each iteration
-
-
-    private static long timeElapsed(long start, long end) {
-
-        return end - start;
-    } // returns elapsed time
+    private static int[] time = new int[10]; // one timeframe for each element
+    private static long start, end;
 
     /*
     *   create a new method to loop through all sorts
@@ -18,18 +13,83 @@ public class Main {
     * */
     public static void main(String[] args) {
 
-        long start, end;
-
         Temp.fillRandom(a); // calls fill rand array and passes along a
+
+//        loop();
+//        loop(4);
+        loop(1.2);
+      /*  loop(true);
+
+        loop('x');  */
+    }
+
+    private static long timeElapsed(long start, long end) {
+
+        return end - start;
+    } // returns elapsed time
+
+    // shell sort
+    private static void loop() {
+
         for (int i = 0; i < 10; i++) {
             Temp.copyArray(a, b); // copies original array a with each iteration
             start = System.nanoTime(); // start timer
             Temp.shellSort(b);
-            // AM.selSort(b);
             end = System.nanoTime(); // end timer
             time[i] = (int) (long) (timeElapsed(start, end)); // converts long to int
         }
-                               // change filepath to the folder location on your computer
         Temp.generateCsvFile("/Users/Samson/Documents/code/java/firstClassProject/sortTimes.csv", time, "Shell sort");
-    }                                                                            // change string for each function call
+    }
+
+    // sel sort
+    private static void loop(int s) {
+
+        for (int i = 0; i < 10; i++) {
+            Temp.copyArray(a, b); // copies original array a with each iteration
+            start = System.nanoTime(); // start timer
+            AM.selSort(b);
+            end = System.nanoTime(); // end timer
+            time[i] = (int) (long) (timeElapsed(start, end)); // converts long to int
+        }
+        Temp.generateCsvFile("/Users/Samson/Documents/code/java/firstClassProject/sortTimes.csv", time, "Sel sort");
+    }
+
+    // quicksort
+    private static void loop(boolean s) {
+
+        for (int i = 0; i < 10; i++) {
+            Temp.copyArray(a, b); // copies original array a with each iteration
+            start = System.nanoTime(); // start timer
+//            Temp.shellSort(b);
+            end = System.nanoTime(); // end timer
+            time[i] = (int) (long) (timeElapsed(start, end)); // converts long to int
+        }
+        Temp.generateCsvFile("/Users/Samson/Documents/code/java/firstClassProject/sortTimes.csv", time, "Quick sort");
+    }
+
+    // insertion sort
+    private static void loop(double f) {
+
+        for (int i = 0; i < 10; i++) {
+            Temp.copyArray(a, b); // copies original array a with each iteration
+            start = System.nanoTime(); // start timer
+            AM.insertionSort(b);
+            end = System.nanoTime(); // end timer
+            time[i] = (int) (long) (timeElapsed(start, end)); // converts long to int
+        }
+        Temp.generateCsvFile("/Users/Samson/Documents/code/java/firstClassProject/sortTimes.csv", time, "Insertion sort");
+    }
+
+    // quick integer sort
+    private static void loop(char s) {
+
+        for (int i = 0; i < 10; i++) {
+            Temp.copyArray(a, b); // copies original array a with each iteration
+            start = System.nanoTime(); // start timer
+            //Temp.shellSort(b);
+            end = System.nanoTime(); // end timer
+            time[i] = (int) (long) (timeElapsed(start, end)); // converts long to int
+        }
+        Temp.generateCsvFile("/Users/Samson/Documents/code/java/firstClassProject/sortTimes.csv", time, "Quick Integer sort");
+    }
 }

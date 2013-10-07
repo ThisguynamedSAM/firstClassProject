@@ -8,7 +8,6 @@ public class Temp {
         // precondition: array a is an empty array of 1000
         // this method will call rand number generator for each array element
         // array will now be filled with random numbers from 0 to 1000
-
         for (int i = 0; i < a.length; i++)
             a[i] = randInt();
     }
@@ -53,8 +52,11 @@ public class Temp {
         // run times
         try {
             FileWriter writer = new FileWriter(sFileName, true); // where true means add to end of file
-            writer.append("\n" + sortName + ",");
-
+            if (sortName == "Shell sort") {
+                writer.append(sortName + ","); // avoids adding a blank line
+            } else {
+                writer.append("\n" + sortName + ",");
+            }
             for (int i = 0; i < d.length; i++) {
                 writer.append(d[i] + ",");
             }
@@ -65,4 +67,6 @@ public class Temp {
             e.printStackTrace();
         }
     }
+
+
 }
