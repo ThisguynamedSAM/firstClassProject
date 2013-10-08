@@ -46,21 +46,40 @@ public class Temp {
         }
     }
 
-    public static void generateCsvFile(String sFileName, int d[], String sortName) {
+    public static void generateCsvFile(String sFileName, int d[]) {
         // method is called with file path, array containing run times, and a string with the name of the sort
         // after this method is called a new line will be added to the .csv file containing the sort name and all
         // run times
         try {
             FileWriter writer = new FileWriter(sFileName, true); // where true means add to end of file
-            if (sortName == "Shell sort") {
-                writer.append(sortName + ","); // avoids adding a blank line
-            } else {
-                writer.append("\n" + sortName + ",");
-            }
+
+            // prints sort times in nano seconds
             for (int i = 0; i < d.length; i++) {
                 writer.append(d[i] + ",");
             }
-            writer.append("Nano seconds");
+            int avg = 0;
+            for ( int i = 0; i < d.length; i++) {
+                 avg += d[i];
+            }
+            avg /= d.length;
+            writer.append(avg + "\n");
+
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void generateCsvFile(String sFileName,String sortName, int elements,  boolean s) {
+        // method is called with file path, array containing run times, and a string with the name of the sort
+        // after this method is called a new line will be added to the .csv file containing the sort name and all
+        // run times
+        try {
+            FileWriter writer = new FileWriter(sFileName, true); // where true means add to end of file
+
+            writer.append( sortName + "," + elements + "," + "elements" + ",,,,,,,," + "average" + "\n");
+
             writer.flush();
             writer.close();
         } catch (IOException e) {
