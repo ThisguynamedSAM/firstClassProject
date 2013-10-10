@@ -49,7 +49,7 @@ public class Temp {
         }
     }
 
-    public static void generateCsvFile (int d[]) {
+    public static void generateCsvFile (long d[]) {
         // method is called with file path, array containing run times, and a string with the name of the sort
         // after this method is called a new line will be added to the .csv file containing the sort name and all
         // run times

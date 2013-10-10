@@ -15,7 +15,7 @@ public class Main {
     private static int[] b3 = new int[250000];
     private static int[] b4 = new int[500000];
 
-    private static int[] time = new int[10]; // one time frame for each element
+    private static long[] time = new long[10]; // one time frame for each element
 
     public static void main (String[] args) {
         // fills arrays with appropriate random elements
@@ -33,6 +33,8 @@ public class Main {
         quickLoop ();
         insertLoop ();
         intLoop (); */
+        callShellSort ( a, b, time );
+
     }
 
     private static long timeElapsed (long start, long end) {
@@ -61,7 +63,7 @@ public class Main {
         callShellSort ( a4, b4, time );
     }
 
-    private static void callShellSort (int[] a, int[] b, int[] time) {
+    private static void callShellSort (int[] a, int[] b, long[] time) {
 
         for (int i = 0; i < 10; i++) {
 
@@ -69,7 +71,7 @@ public class Main {
             start = System.nanoTime (); // start timer
             Temp.shellSort ( b );
             end = System.nanoTime (); // end timer
-            time[i] = (int) (long) ( timeElapsed ( start, end ) ); // converts long to int
+            time[i] =  timeElapsed ( start, end  ); // converts long to int
         }
         Temp.generateCsvFile ( time );
     }
@@ -95,7 +97,7 @@ public class Main {
         callSelSort ( a4, b4, time );
     }
 
-    private static void callSelSort (int[] a, int[] b, int[] time) {
+    private static void callSelSort (int[] a, int[] b, long[] time) {
 
         for (int i = 0; i < 10; i++) {
 
@@ -129,13 +131,13 @@ public class Main {
         callQuickSort ( a4, b4, time );
     }
 
-    private static void callQuickSort (int[] a, int[] b, int[] time) {
+    private static void callQuickSort (int[] a, int[] b, long[] time) {
 
         for (int i = 0; i < 10; i++) {
 
             Temp.copyArray ( a, b ); // copies original array a with each iteration
             start = System.nanoTime (); // start timer
-            AM.qs ( b, 0, b.length - 1 );
+            AM.qs ( b, 0, b.length );
             end = System.nanoTime (); // end timer
             time[i] = (int) (long) ( timeElapsed ( start, end ) ); // converts long to int
         }
@@ -163,7 +165,7 @@ public class Main {
         callInsertSort ( a4, b4, time );
     }
 
-    private static void callInsertSort (int[] a, int[] b, int[] time) {
+    private static void callInsertSort (int[] a, int[] b, long[] time) {
 
         for (int i = 0; i < 10; i++) {
 
@@ -197,7 +199,7 @@ public class Main {
         callIntSort ( a4, b4, time );
     }
 
-    private static void callIntSort (int[] a, int[] b, int[] time) {
+    private static void callIntSort (int[] a, int[] b, long[] time) {
 
         for (int i = 0; i < 10; i++) {
 
