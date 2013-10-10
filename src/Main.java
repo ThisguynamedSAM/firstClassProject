@@ -33,7 +33,7 @@ public class Main {
         quickLoop ();
         insertLoop ();
         intLoop (); */
-        callShellSort ( a, b, time );
+        quickLoop ();
 
     }
 
@@ -105,7 +105,7 @@ public class Main {
             start = System.nanoTime (); // start timer
             AM.selSort ( b );
             end = System.nanoTime (); // end timer
-            time[i] = (int) (long) ( timeElapsed ( start, end ) ); // converts long to int
+            time[i] = timeElapsed ( start, end ); // converts long to int
         }
         Temp.generateCsvFile ( time );
     }
@@ -117,7 +117,7 @@ public class Main {
 
         Temp.generateCsvFile ( "Quick sort", 1000, true );
         callQuickSort ( a, b, time );
-
+       /*
         Temp.generateCsvFile ( "Quick sort", 10000, true );
         callQuickSort ( a1, b1, time ); // calls sh
 
@@ -128,7 +128,7 @@ public class Main {
         callQuickSort ( a3, b3, time );
 
         Temp.generateCsvFile ( "Quick sort", 500000, true );
-        callQuickSort ( a4, b4, time );
+        callQuickSort ( a4, b4, time );    */
     }
 
     private static void callQuickSort (int[] a, int[] b, long[] time) {
@@ -137,9 +137,9 @@ public class Main {
 
             Temp.copyArray ( a, b ); // copies original array a with each iteration
             start = System.nanoTime (); // start timer
-            AM.qs ( b, 0, b.length );
+            AM.qs ( b, 0, b.length - 1);
             end = System.nanoTime (); // end timer
-            time[i] = (int) (long) ( timeElapsed ( start, end ) ); // converts long to int
+            time[i] =  timeElapsed ( start, end ); // converts long to int
         }
         Temp.generateCsvFile ( time );
     }
@@ -173,7 +173,7 @@ public class Main {
             start = System.nanoTime (); // start timer
             AM.insertionSort ( b );
             end = System.nanoTime (); // end timer
-            time[i] = (int) (long) ( timeElapsed ( start, end ) ); // converts long to int
+            time[i] = timeElapsed ( start, end ); // converts long to int
         }
         Temp.generateCsvFile ( time );
     }
@@ -207,7 +207,7 @@ public class Main {
             start = System.nanoTime (); // start timer
             AM.intSort ( b );
             end = System.nanoTime (); // end timer
-            time[i] = (int) (long) ( timeElapsed ( start, end ) ); // converts long to int
+            time[i] = timeElapsed ( start, end ); // converts long to int
         }
         Temp.generateCsvFile ( time );
     }
