@@ -4,27 +4,30 @@ import java.util.Random;
 
 public class Temp {
 
-    public static void fillRandom(int a[]) {
+    private static String filePath = "/Users/Samson/Documents/code/java/firstClassProject/sortTimes.csv";
+    // change file path to main project folder
+
+    public static void fillRandom (int a[]) {
         // precondition: array a is an empty array of 1000
         // this method will call rand number generator for each array element
         // array will now be filled with random numbers from 0 to 1000
         for (int i = 0; i < a.length; i++)
-            a[i] = randInt();
+            a[i] = randInt ();
     }
 
-    public static int randInt() {
+    public static int randInt () {
         // generates a random number from 0 - 1000
-        Random rand = new Random();
-        return rand.nextInt(1000);
+        Random rand = new Random ();
+        return rand.nextInt ( 1000 );
     }
 
-    public static void copyArray(int a[], int b[]) {
+    public static void copyArray (int a[], int b[]) {
         // copies each element of array a to array b
         for (int i = 0; i < a.length; i++)
             b[i] = a[i];
     }
 
-    public static void shellSort(int[] b) {
+    public static void shellSort (int[] b) {
 
         int h = 1;
         while (h < b.length) h = 3 * h + 1;
@@ -46,44 +49,44 @@ public class Temp {
         }
     }
 
-    public static void generateCsvFile(String sFileName, int d[]) {
+    public static void generateCsvFile (int d[]) {
         // method is called with file path, array containing run times, and a string with the name of the sort
         // after this method is called a new line will be added to the .csv file containing the sort name and all
         // run times
         try {
-            FileWriter writer = new FileWriter(sFileName, true); // where true means add to end of file
+            FileWriter writer = new FileWriter ( filePath, true ); // where true means add to end of file
 
             // prints sort times in nano seconds
             for (int i = 0; i < d.length; i++) {
-                writer.append(d[i] + ",");
+                writer.append ( d[i] + "," );
             }
             int avg = 0;
-            for ( int i = 0; i < d.length; i++) {
-                 avg += d[i];
+            for (int i = 0; i < d.length; i++) {
+                avg += d[i];
             }
             avg /= d.length;
-            writer.append(avg + "\n");
+            writer.append ( avg + "\n" );
 
-            writer.flush();
-            writer.close();
+            writer.flush ();
+            writer.close ();
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace ();
         }
     }
 
-    public static void generateCsvFile(String sFileName,String sortName, int elements,  boolean s) {
+    public static void generateCsvFile (String sortName, int elements, boolean s) {
         // method is called with file path, array containing run times, and a string with the name of the sort
         // after this method is called a new line will be added to the .csv file containing the sort name and all
         // run times
         try {
-            FileWriter writer = new FileWriter(sFileName, true); // where true means add to end of file
+            FileWriter writer = new FileWriter ( filePath, true ); // where true means add to end of file
 
-            writer.append( sortName + "," + elements + "," + "elements" + ",,,,,,,," + "average" + "\n");
+            writer.append ( sortName + "," + elements + "," + "elements" + ",,,,,,,," + "average" + "\n" );
 
-            writer.flush();
-            writer.close();
+            writer.flush ();
+            writer.close ();
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace ();
         }
     }
 }

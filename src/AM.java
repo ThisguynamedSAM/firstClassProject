@@ -379,7 +379,5 @@ public class AM {
             for (int j = 0; j < freq[i]; j++)// note: if no i at all then loop ends immediately
 
                 a[k++] = i; // add an i to the a array
-
-
     }
 }
