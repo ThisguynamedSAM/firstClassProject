@@ -1,7 +1,11 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.*;
+import java.util.Random;
 
 public class AM {
+    private static String filePath = "/Users/Samson/Documents/code/java/firstClassProject/sortTimes.csv";
 
     public static int findPosOfLargest (int[] b) {
 
@@ -249,6 +253,92 @@ public class AM {
         }
         System.out.println ( s );
     }
+ // ======================================================
+
+    public static void fillRandom (int a[]) {
+        // precondition: array a is an empty array of 1000
+        // this method will call rand number generator for each array element
+        // array will now be filled with random numbers from 0 to 1000
+        for (int i = 0; i < a.length; i++)
+            a[i] = randInt ();
+    }
+
+
+    public static int randInt () {
+        // generates a random number from 0 - 1000
+        Random rand = new Random ();
+        return rand.nextInt ( 1000 );
+    }
+
+    public static void copyArray (int a[], int b[]) {
+        // copies each element of array a to array b
+        for (int i = 0; i < a.length; i++)
+            b[i] = a[i];
+    }
+
+
+    public static void shellSort (int[] b) {
+
+        int h = 1;
+        while (h < b.length) h = 3 * h + 1;
+        while (h > 0) {
+            h = h / 3;
+            for (int k = 0; k < h; k++) {
+                for (int i = h + k; i < b.length; i += h) {
+                    int key = b[i];
+                    int j = i - h;
+                    while (j >= 0 && b[j] > key) {
+                        b[j + h] = b[j];
+                        j -= h;
+                    }
+                    b[j + h] = key;
+                    //-> invariant: array[0,h,2*h..j] is sorted
+                }
+            }
+            //->invariant: each h-sub-array is sorted
+        }
+    }
+    public static void generateCsvFile (long d[]) {
+        // method is called with file path, array containing run times, and a string with the name of the sort
+        // after this method is called a new line will be added to the .csv file containing the sort name and all
+        // run times
+        try {
+            FileWriter writer = new FileWriter ( filePath, true ); // where true means add to end of file
+
+            // prints sort times in nano seconds
+            for (int i = 0; i < d.length; i++) {
+                writer.append ( d[i] + "," );
+            }
+            int avg = 0;
+            for (int i = 0; i < d.length; i++) {
+                avg += d[i];
+            }
+            avg /= d.length;
+            writer.append ( avg + "\n" );
+
+            writer.flush ();
+            writer.close ();
+        } catch (IOException e) {
+            e.printStackTrace ();
+        }
+    }
+
+
+    public static void generateCsvFile (String sortName, int elements, boolean s) {
+        // method is called with file path, array containing run times, and a string with the name of the sort
+        // after this method is called a new line will be added to the .csv file containing the sort name and all
+        // run times
+        try {
+            FileWriter writer = new FileWriter ( filePath, true ); // where true means add to end of file
+
+            writer.append ( sortName + "," + elements + "," + "elements" + ",,,,,,,," + "average" + "\n" );
+
+            writer.flush ();
+            writer.close ();
+        } catch (IOException e) {
+            e.printStackTrace ();
+        }
+    }
 
     public static void insertionSort (int[] a) {
         //precondition: a has been filled
@@ -323,41 +413,6 @@ public class AM {
             swap ( a, m, end );
     }
 
-    public static void qs (int[] a, int st, int end) {
-        //precondition: a has been filled thru possition end
-        //base case
-        if (end - st < 8)
-            insertionSort ( a, st, end );
-        else {
-            medOfThree ( a, st, end );
-            int p = partition ( a, st, end );// write as an exercise
-
-            if (( p + 1 ) < end) qs ( a, p + 1, end );
-            if (p - 1 > st) qs ( a, st, p - 1 );
-        }
-    }
-
-    private static int partition (int[] a, int st, int end) {
-
-        int lp = st, rp = end - 1;
-
-        do {
-            while (a[rp] > a[end])
-                rp--;
-            while (a[lp] < a[end])
-                lp++;
-            swap ( a, lp, rp );
-        }
-        while (lp < rp);
-        //unswapping LP and RP and moving the pivot to the correct location
-        int temp = a[end];
-        a[end] = a[rp];
-        a[rp] = a[lp];
-        a[lp] = temp;
-
-        return lp;
-    }
-
     public static void reset (int a[]) {
 
         for (int i = 0; i < a.length; i++)
@@ -380,64 +435,44 @@ public class AM {
 
                 a[k++] = i; // add an i to the a array
     }
+
     //New QS Sort
-        public static int partition(int arr[], int left, int right)
+    public static int partition (int arr[], int left, int right) {
 
-    {
+        int i = left, j = right;
+        int tmp;
+        int pivot = arr[( left + right ) / 2];
 
-          int i = left, j = right;
+        while (i <= j) {
+            while (arr[i] < pivot)
+                i++;
 
-          int tmp;
+            while (arr[j] > pivot)
+                j--;
 
-          int pivot = arr[(left + right) / 2];
+            if (i <= j) {
 
-         
-
-          while (i <= j) {
-
-                while (arr[i] < pivot)
-
-                      i++;
-
-                while (arr[j] > pivot)
-
-                      j--;
-
-                if (i <= j) {
-
-                      tmp = arr[i];
-
-                      arr[i] = arr[j];
-
-                      arr[j] = tmp;
-
-                      i++;
-
-                      j--;
-
-                }
-
-          };
-
-         
-
-          return i;
-
+                tmp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = tmp;
+                i++;
+                j--;
+            }
+        }
+        return i;
     }
 
-     
+    public static void quickSort (int arr[], int left, int right) {
 
-    public static void quickSort(int arr[], int left, int right) {
+        int index = partition ( arr, left, right );
 
-          int index = partition(arr, left, right);
+        if (left < index - 1)
 
-          if (left < index - 1)
+            quickSort ( arr, left, index - 1 );
 
-                quickSort(arr, left, index - 1);
+        if (index < right)
 
-          if (index < right)
-
-                quickSort(arr, index, right);
-
+            quickSort ( arr, index, right );
     }
 }
+
