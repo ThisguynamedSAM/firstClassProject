@@ -1,4 +1,3 @@
-
 public class Main {
 
     private static long start, end;
@@ -16,6 +15,10 @@ public class Main {
 
     public static void main(String[] args) {
         // fills arrays with appropriate random elements
+
+        warmUp(); // calls method to warm up processor
+
+        // fills all arrays with appropriate elements
         AM.fillRandom( a );
         AM.fillRandom( a2 );
         AM.fillRandom( a3 );
@@ -33,6 +36,13 @@ public class Main {
         System.exit(0);
     }
 
+    private static void warmUp() {
+        // This method fills a local array and sorts it
+        // The purpose of this method is to warm up the processor for the sortings to come
+        int z[] = new int[10000];
+        AM.fillArray( z );
+        AM.shellSort( z );
+    }
     private static long timeElapsed(long start, long end) {
         // returns elapsed time
         return end - start;
